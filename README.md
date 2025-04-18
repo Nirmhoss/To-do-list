@@ -24,6 +24,7 @@ A simple RESTful API for managing a todo list with user authentication using JWT
 todo_api/
 ├── .env                    # Environment variables
 ├── .gitignore              # Git ignore file
+├── LICENSE                 # MIT License file
 ├── README.md               # Documentation
 ├── requirements.txt        # Project dependencies
 ├── config.py               # Configuration settings
