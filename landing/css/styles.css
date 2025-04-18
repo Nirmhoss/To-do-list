@@ -1,0 +1,466 @@
+/* Base styles and CSS reset */
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #475569;
+    --background-color: #f8fafc;
+    --text-color: #1e293b;
+    --light-gray: #e2e8f0;
+    --white: #ffffff;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --transition: all 0.3s ease;
+    --border-radius: 8px;
+    --font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; /* 10px base for easier rem calculations */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 3.6rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 2.4rem;
+}
+
+p {
+    margin-bottom: 1.6rem;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Header */
+.header {
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+.university-logo {
+    width: 8rem;
+    height: auto;
+}
+
+.language-switch {
+    display: flex;
+    gap: 1rem;
+}
+
+.language-switch a {
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+}
+
+.language-switch a.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Hero Section */
+.hero {
+    padding: 6rem 0;
+    text-align: center;
+    background-color: var(--primary-color);
+    background-image: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+}
+
+.main-title {
+    margin-bottom: 1rem;
+    font-size: 4.2rem;
+}
+
+.subtitle {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.thesis-info {
+    margin-bottom: 4rem;
+}
+
+.author, .supervisor {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-image-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+}
+
+/* Section styles */
+section {
+    padding: 8rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 6rem;
+    height: 0.4rem;
+    background-color: var(--primary-color);
+    margin: 1.5rem auto 0;
+    border-radius: 2rem;
+}
+
+/* About Section */
+.about {
+    background-color: var(--white);
+}
+
+.description {
+    max-width: 80rem;
+    margin: 0 auto 4rem;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.keywords-container {
+    max-width: 60rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.keywords-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    margin-top: 1.5rem;
+}
+
+.keywords-list li {
+    background-color: var(--light-gray);
+    color: var(--secondary-color);
+    padding: 0.8rem 1.6rem;
+    border-radius: 2rem;
+    font-weight: 500;
+}
+
+/* Goals Section */
+.goals {
+    background-color: var(--background-color);
+}
+
+.goal-description {
+    max-width: 80rem;
+    margin: 0 auto 4rem;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.tasks-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.tasks-list {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding-left: 2rem;
+}
+
+.tasks-list li {
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+}
+
+/* Methodology Section */
+.methodology {
+    background-color: var(--white);
+}
+
+.methodology-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4rem;
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+.methodology-text {
+    flex: 1 1 45rem;
+}
+
+.methodology-image {
+    flex: 1 1 35rem;
+    display: flex;
+    justify-content: center;
+}
+
+.methodology-list {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.methodology-list li {
+    margin-bottom: 1.5rem;
+    padding-left: 3rem;
+    position: relative;
+}
+
+.methodology-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Results Section */
+.results {
+    background-color: var(--background-color);
+}
+
+.results-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 3rem;
+    margin-bottom: 5rem;
+}
+
+.result-card {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.card-icon {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+.card-title {
+    margin-bottom: 1.5rem;
+}
+
+.github-link {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.github-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1.2rem 2.4rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.github-link a:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+}
+
+.github-icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Contact Section */
+.contact {
+    background-color: var(--white);
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 4rem;
+    max-width: 90rem;
+    margin: 0 auto;
+}
+
+.contact-info {
+    flex: 1 1 40rem;
+}
+
+.contact-info p {
+    margin-bottom: 1.5rem;
+}
+
+.thesis-download {
+    flex: 1 1 30rem;
+    display: flex;
+    justify-content: center;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1.2rem 2.4rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.download-btn:hover {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+.download-icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.footer a {
+    color: var(--light-gray);
+}
+
+.footer a:hover {
+    color: var(--white);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 58%;
+    }
+
+    .main-title {
+        font-size: 3.6rem;
+    }
+
+    .subtitle {
+        font-size: 2rem;
+    }
+
+    .methodology-content {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .results-cards {
+        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    }
+
+    section {
+        padding: 6rem 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 55%;
+    }
+
+    .main-title {
+        font-size: 3rem;
+    }
+
+    .subtitle {
+        font-size: 1.8rem;
+    }
+
+    .results-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-content {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    section {
+        padding: 5rem 0;
+    }
+}
