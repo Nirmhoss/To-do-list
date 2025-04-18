@@ -6,7 +6,7 @@
  from pathlib import Path
 -from typing import List, Optional, Dict, Any, Tuple
 +from typing import Any, Dict, List, Optional, Tuple
- 
+
  # Define colors for terminal output (works on Windows with newer versions of Python)
  COLORS = {
 [0m

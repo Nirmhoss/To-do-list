@@ -10,4 +10,3 @@ app\utils\__init__.py:1:0: R0401: Cyclic import (app -> app.routes.auth -> app.u
 
 ------------------------------------------------------------------
 Your code has been rated at 9.55/10 (previous run: 6.15/10, +3.40)
-

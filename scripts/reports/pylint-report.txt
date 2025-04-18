@@ -83,4 +83,3 @@ C:\Users\misha\Desktop\todo_api\app\utils\__init__.py:1:0: R0401: Cyclic import 
 
 ------------------------------------------------------------------
 Your code has been rated at 5.38/10 (previous run: 5.32/10, +0.06)
-
