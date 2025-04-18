@@ -1,149 +1,75 @@
-from flask import Blueprint, request, jsonify
+"""
+Модуль маршрутів для управління завданнями в Todo API.
+
+Цей модуль визначає API-ендпоінти для операцій CRUD над завданнями,
+включаючи створення, читання, оновлення та видалення завдань користувачів.
+"""
+
+from flask import Blueprint, jsonify, request
+from typing import List, Dict, Any, Tuple, Optional
 
 from app import db
 from app.models.todo import Todo
 from app.utils.auth import token_required
 
-# Create blueprint
+
 todos_bp = Blueprint('todos', __name__)
 
-@todos_bp.route('', methods=['GET'])
-@token_required
-def get_todos(current_user):
-    """
-    Get all todos for the current user
-    
-    This route is protected by the token_required decorator
-    
-    Returns:
-        200: List of todos
-    """
-    todos = Todo.query.filter_by(user_id=current_user.id).all()
-    return jsonify([todo.to_dict() for todo in todos]), 200
-
-@todos_bp.route('/<int:todo_id>', methods=['GET'])
-@token_required
-def get_todo(current_user, todo_id):
-    """
-    Get a specific todo by ID
-    
-    This route is protected by the token_required decorator
-    
-    Args:
-        todo_id: The ID of the todo to retrieve
-    
-    Returns:
-        200: Todo details
-        404: Todo not found
-    """
-    todo = Todo.query.filter_by(id=todo_id, user_id=current_user.id).first()
-    
-    if not todo:
-        return jsonify({'message': 'Todo not found'}), 404
-        
-    return jsonify(todo.to_dict()), 200
 
 @todos_bp.route('', methods=['POST'])
 @token_required
-def create_todo(current_user):
+def create_todo(current_user) -> Tuple[Dict[str, Any], int]:
     """
-    Create a new todo
-    
-    This route is protected by the token_required decorator
-    
-    Request body:
-        {
-            "title": "string",
-            "description": "string" (optional),
-            "completed": boolean (optional, defaults to false)
-        }
-    
+    Створює нове завдання для поточного користувача.
+
+    Ця функція обробляє POST-запити для створення нового завдання (todo).
+    Вона приймає JSON-дані з деталями завдання, валідує їх та створює
+    новий запис у базі даних.
+
+    Args:
+        current_user: Об'єкт поточного користувача, доданий декоратором token_required
+
     Returns:
-        201: Created todo
-        400: Title is required
+        Tuple[Dict[str, Any], int]: JSON-відповідь з даними створеного завдання і код 201
+
+    Raises:
+        400: Якщо титул (title) завдання відсутній у запиті
+
+    Request Body:
+        {
+            "title": "Зробити домашнє завдання",
+            "description": "Виконати всі вправи з математики",
+            "completed": false
+        }
+
+    Response:
+        {
+            "id": 1,
+            "title": "Зробити домашнє завдання",
+            "description": "Виконати всі вправи з математики",
+            "completed": false,
+            "user_id": 42,
+            "created_at": "2025-04-18T10:30:00Z",
+            "updated_at": "2025-04-18T10:30:00Z"
+        }
     """
     data = request.get_json()
-    
-    # Check if required fields are provided
+
+    # Перевірка наявності обов'язкових полів
     if 'title' not in data:
         return jsonify({'message': 'Title is required'}), 400
-    
-    # Create new todo
+
+    # Створення нового завдання
     new_todo = Todo(
         title=data['title'],
         description=data.get('description', ''),
         completed=data.get('completed', False),
         user_id=current_user.id
     )
-    
-    # Add todo to database
+
+    # Додавання завдання до бази даних
     db.session.add(new_todo)
     db.session.commit()
-    
+
+    # Повернення створеного завдання у відповіді
     return jsonify(new_todo.to_dict()), 201
-
-@todos_bp.route('/<int:todo_id>', methods=['PUT'])
-@token_required
-def update_todo(current_user, todo_id):
-    """
-    Update a todo
-    
-    This route is protected by the token_required decorator
-    
-    Args:
-        todo_id: The ID of the todo to update
-        
-    Request body:
-        {
-            "title": "string" (optional),
-            "description": "string" (optional),
-            "completed": boolean (optional)
-        }
-    
-    Returns:
-        200: Updated todo
-        404: Todo not found
-    """
-    todo = Todo.query.filter_by(id=todo_id, user_id=current_user.id).first()
-    
-    if not todo:
-        return jsonify({'message': 'Todo not found'}), 404
-    
-    data = request.get_json()
-    
-    # Update todo fields if they are provided
-    if 'title' in data:
-        todo.title = data['title']
-    if 'description' in data:
-        todo.description = data['description']
-    if 'completed' in data:
-        todo.completed = data['completed']
-    
-    db.session.commit()
-    
-    return jsonify(todo.to_dict()), 200
-
-@todos_bp.route('/<int:todo_id>', methods=['DELETE'])
-@token_required
-def delete_todo(current_user, todo_id):
-    """
-    Delete a todo
-    
-    This route is protected by the token_required decorator
-    
-    Args:
-        todo_id: The ID of the todo to delete
-        
-    Returns:
-        200: Todo deleted successfully
-        404: Todo not found
-    """
-    todo = Todo.query.filter_by(id=todo_id, user_id=current_user.id).first()
-    
-    if not todo:
-        return jsonify({'message': 'Todo not found'}), 404
-    
-    db.session.delete(todo)
-    db.session.commit()
-    
-    return jsonify({'message': 'Todo deleted successfully'}), 200

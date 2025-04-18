@@ -1,0 +1,28 @@
+.\app\routes\auth.py:24:1: E304 blank lines found after function decorator
+.\app\routes\auth.py:66:1: E304 blank lines found after function decorator
+.\app\routes\auth.py:111:1: E304 blank lines found after function decorator
+.\app\routes\todos.py:21:1: E304 blank lines found after function decorator
+.\app\routes\todos.py:38:1: E304 blank lines found after function decorator
+.\app\routes\todos.py:63:1: E304 blank lines found after function decorator
+.\app\routes\todos.py:105:1: E304 blank lines found after function decorator
+.\app\routes\todos.py:149:1: E304 blank lines found after function decorator
+.\fix_lint.py:7:1: F401 'os' imported but unused
+.\fix_lint.py:9:1: F401 'sys' imported but unused
+.\fix_lint.py:130:101: E501 line too long (105 > 100 characters)
+.\scripts\lint.py:10:1: F401 'sys' imported but unused
+.\scripts\lint.py:12:1: F401 'typing.Any' imported but unused
+.\scripts\lint.py:12:1: F401 'typing.Dict' imported but unused
+.\scripts\lint.py:12:1: F401 'typing.Optional' imported but unused
+.\scripts\lint.py:245:9: F841 local variable 'isort_success' is assigned to but never used
+.\scripts\lint.py:246:9: F841 local variable 'black_success' is assigned to but never used
+.\seeds\seed.py:3:1: F401 'datetime.datetime' imported but unused
+.\seeds\seed.py:8:1: E402 module level import not at top of file
+.\seeds\seed.py:9:1: E402 module level import not at top of file
+.\seeds\seed.py:10:1: E402 module level import not at top of file
+.\super_fix.py:10:1: F401 'sys' imported but unused
+.\super_fix.py:12:1: F401 'typing.Tuple' imported but unused
+.\super_fix.py:188:101: E501 line too long (154 > 100 characters)
+.\super_fix.py:190:101: E501 line too long (161 > 100 characters)
+.\super_fix.py:192:101: E501 line too long (146 > 100 characters)
+.\super_fix.py:252:101: E501 line too long (105 > 100 characters)
+.\super_fix.py:257:11: F541 f-string is missing placeholders

@@ -1,0 +1,12 @@
+--- C:\Users\misha\Desktop\todo_api\scripts\lint.py:before	2025-04-18 19:23:36.343184
++++ C:\Users\misha\Desktop\todo_api\scripts\lint.py:after	2025-04-18 19:31:35.258960
+@@ -9,7 +9,7 @@
+ import subprocess
+ import sys
+ from pathlib import Path
+-from typing import List, Optional, Dict, Any, Tuple
++from typing import Any, Dict, List, Optional, Tuple
+
+ # Define colors for terminal output (works on Windows with newer versions of Python)
+ COLORS = {
+[0m
