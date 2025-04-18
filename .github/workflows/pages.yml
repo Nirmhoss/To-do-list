@@ -1,6 +1,8 @@
 name: Deploy landing page to GitHub Pages
-
 on:
+  # Allow manual triggering of the workflow
+  workflow_dispatch:
+  # Automatically trigger on push to release/landing-page branch
   push:
     branches:
       - release/landing-page
@@ -23,16 +25,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
-
+      
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./landing
           destination: ./_site
-
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
