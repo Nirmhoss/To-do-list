@@ -1,3 +1,9 @@
+"""
+Application entry point for the Todo API.
+
+This script initializes the Flask application and runs the development server
+with appropriate configuration.
+"""
 from app import create_app, db
 
 # Create the application using the factory function
@@ -7,6 +13,6 @@ app = create_app()
 with app.app_context():
     db.create_all()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Run the application with debugging enabled
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host="0.0.0.0", port=5000)

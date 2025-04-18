@@ -1,0 +1,117 @@
+--- C:\Users\misha\Desktop\todo_api\config.py:before	2025-04-17 21:09:49.776295
++++ C:\Users\misha\Desktop\todo_api\config.py:after	2025-04-18 19:16:54.369136
+@@ -1,5 +1,6 @@
+ import os
+ from datetime import timedelta
++
+ from dotenv import load_dotenv
+ 
+ load_dotenv()
+--- C:\Users\misha\Desktop\todo_api\app\__init__.py:before	2025-04-17 21:10:33.454382
++++ C:\Users\misha\Desktop\todo_api\app\__init__.py:after	2025-04-18 19:16:54.460034
+@@ -1,7 +1,7 @@
+ from flask import Flask
++from flask_cors import CORS
++from flask_migrate import Migrate
+ from flask_sqlalchemy import SQLAlchemy
+-from flask_migrate import Migrate
+-from flask_cors import CORS
+ 
+ from config import Config
+ 
+--- C:\Users\misha\Desktop\todo_api\app\models\todo.py:before	2025-04-17 21:13:25.049133
++++ C:\Users\misha\Desktop\todo_api\app\models\todo.py:after	2025-04-18 19:16:54.462034
+@@ -1,5 +1,7 @@
++from datetime import datetime
++
+ from app import db
+-from datetime import datetime
++
+ 
+ class Todo(db.Model):
+     """
+--- C:\Users\misha\Desktop\todo_api\app\models\user.py:before	2025-04-17 21:12:41.830718
++++ C:\Users\misha\Desktop\todo_api\app\models\user.py:after	2025-04-18 19:16:54.471137
+@@ -1,6 +1,9 @@
++from datetime import datetime
++
++from werkzeug.security import check_password_hash, generate_password_hash
++
+ from app import db
+-from datetime import datetime
+-from werkzeug.security import generate_password_hash, check_password_hash
++
+ 
+ class User(db.Model):
+     """
+--- C:\Users\misha\Desktop\todo_api\app\routes\auth.py:before	2025-04-17 21:17:22.486090
++++ C:\Users\misha\Desktop\todo_api\app\routes\auth.py:after	2025-04-18 19:16:54.494204
+@@ -1,7 +1,8 @@
+-from flask import Blueprint, request, jsonify
++import os
++from datetime import datetime, timedelta
++
+ import jwt
+-from datetime import datetime, timedelta
+-import os
++from flask import Blueprint, jsonify, request
+ 
+ from app import db
+ from app.models.user import User
+--- C:\Users\misha\Desktop\todo_api\app\routes\todos.py:before	2025-04-17 21:17:55.414239
++++ C:\Users\misha\Desktop\todo_api\app\routes\todos.py:after	2025-04-18 19:16:54.503719
+@@ -1,4 +1,4 @@
+-from flask import Blueprint, request, jsonify
++from flask import Blueprint, jsonify, request
+ 
+ from app import db
+ from app.models.todo import Todo
+--- C:\Users\misha\Desktop\todo_api\app\utils\auth.py:before	2025-04-17 21:16:36.627588
++++ C:\Users\misha\Desktop\todo_api\app\utils\auth.py:after	2025-04-18 19:16:54.520316
+@@ -1,9 +1,11 @@
++import os
+ from functools import wraps
+-from flask import request, jsonify
++
+ import jwt
+-import os
++from flask import jsonify, request
+ 
+ from app.models.user import User
++
+ 
+ def token_required(f):
+     """
+--- C:\Users\misha\Desktop\todo_api\migrations\env.py:before	2025-04-17 21:43:15.906127
++++ C:\Users\misha\Desktop\todo_api\migrations\env.py:after	2025-04-18 19:16:54.541350
+@@ -1,9 +1,8 @@
+ import logging
+ from logging.config import fileConfig
+ 
++from alembic import context
+ from flask import current_app
+-
+-from alembic import context
+ 
+ # this is the Alembic Config object, which provides
+ # access to the values within the .ini file in use.
+--- C:\Users\misha\Desktop\todo_api\seeds\seed.py:before	2025-04-17 21:19:13.526397
++++ C:\Users\misha\Desktop\todo_api\seeds\seed.py:after	2025-04-18 19:16:54.552304
+@@ -1,13 +1,14 @@
++import os
+ import sys
+-import os
+ from datetime import datetime
+ 
+ # Add the parent directory to the Python path
+ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ 
+ from app import create_app, db
++from app.models.todo import Todo
+ from app.models.user import User
+-from app.models.todo import Todo
++
+ 
+ def seed_database():
+     """
+Skipped 2 files

@@ -1,0 +1,13 @@
+************* Module app
+app\__init__.py:40:4: C0415: Import outside toplevel (app.routes.auth.auth_bp) (import-outside-toplevel)
+app\__init__.py:41:4: C0415: Import outside toplevel (app.routes.todos.todos_bp) (import-outside-toplevel)
+************* Module app.utils.__init__
+app\utils\__init__.py:1:0: R0401: Cyclic import (app -> app.routes.auth) (cyclic-import)
+app\utils\__init__.py:1:0: R0401: Cyclic import (app -> app.routes.todos -> app.models.todo) (cyclic-import)
+app\utils\__init__.py:1:0: R0401: Cyclic import (app -> app.routes.auth -> app.models.user) (cyclic-import)
+app\utils\__init__.py:1:0: R0401: Cyclic import (app -> app.routes.todos -> app.utils.auth -> app.models.user) (cyclic-import)
+app\utils\__init__.py:1:0: R0401: Cyclic import (app -> app.routes.auth -> app.utils.auth -> app.models.user) (cyclic-import)
+
+------------------------------------------------------------------
+Your code has been rated at 9.55/10 (previous run: 6.15/10, +3.40)
+

@@ -1,0 +1,36 @@
+.\lint.py:10:1: F401 'sys' imported but unused
+.\lint.py:12:1: F401 'typing.Optional' imported but unused
+.\lint.py:12:1: F401 'typing.Dict' imported but unused
+.\lint.py:12:1: F401 'typing.Any' imported but unused
+.\lint.py:68:1: W293 blank line contains whitespace
+.\lint.py:92:1: W293 blank line contains whitespace
+.\lint.py:113:1: W293 blank line contains whitespace
+.\lint.py:116:1: W293 blank line contains whitespace
+.\lint.py:119:1: W293 blank line contains whitespace
+.\lint.py:134:1: W293 blank line contains whitespace
+.\lint.py:137:1: W293 blank line contains whitespace
+.\lint.py:140:1: W293 blank line contains whitespace
+.\lint.py:156:1: W293 blank line contains whitespace
+.\lint.py:159:1: W293 blank line contains whitespace
+.\lint.py:162:1: W293 blank line contains whitespace
+.\lint.py:177:1: W293 blank line contains whitespace
+.\lint.py:180:1: W293 blank line contains whitespace
+.\lint.py:183:1: W293 blank line contains whitespace
+.\lint.py:197:1: W293 blank line contains whitespace
+.\lint.py:201:1: W293 blank line contains whitespace
+.\lint.py:205:1: W293 blank line contains whitespace
+.\lint.py:212:101: E501 line too long (101 > 100 characters)
+.\lint.py:213:101: E501 line too long (105 > 100 characters)
+.\lint.py:214:101: E501 line too long (102 > 100 characters)
+.\lint.py:218:1: W293 blank line contains whitespace
+.\lint.py:226:1: W293 blank line contains whitespace
+.\lint.py:229:1: W293 blank line contains whitespace
+.\lint.py:233:1: W293 blank line contains whitespace
+.\lint.py:236:1: W293 blank line contains whitespace
+.\lint.py:239:9: F841 local variable 'isort_success' is assigned to but never used
+.\lint.py:240:9: F841 local variable 'black_success' is assigned to but never used
+.\lint.py:241:1: W293 blank line contains whitespace
+.\lint.py:248:1: W293 blank line contains whitespace
+.\lint.py:250:1: W293 blank line contains whitespace
+.\lint.py:254:1: W293 blank line contains whitespace
+.\lint.py:265:1: W293 blank line contains whitespace
